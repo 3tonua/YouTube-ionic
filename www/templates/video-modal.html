@@ -1,0 +1,10 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">{{open_video.title}}</h1>
+    </ion-header-bar>
+    <ion-content>
+        <p>{{open_video.author}}</p>
+        <p>{{open_video.description | limitTo: 100}}</p>
+        <iframe width="560" height="315" ng-src="{{url}}" frameborder="0" allowfullscreen></iframe>
+    </ion-content>
+</ion-modal-view>
