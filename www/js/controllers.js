@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function($scope, API, $ionicModal) {
+.controller('PlaylistsCtrl', function($scope, API, $ionicModal, $sce) {
 
   $ionicModal.fromTemplateUrl('templates/video-modal.html', {
     scope: $scope,
@@ -17,18 +17,13 @@ angular.module('starter.controllers', [])
     $scope.openVideo = function (video) {
       $scope.open_video = video;
       $scope.modal.show();
-      console.log(video);
+      console.log(video.id);
+
+      $scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + video.id);
   };
+
   API.getMostPopularVideos().then(function (data) {
     $scope.videos = data;
     console.log(data);
   });
-
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
-
-controller('OpenVideoController', function ($routeParams, $scope, $sce) {
-  $scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $routeParams.id)
 });

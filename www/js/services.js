@@ -11,7 +11,7 @@ angular.module('starter.services', [])
                     part: "snippet",
                     key: apiKeys.youtube,
                     chart: 'MostPopular',
-                    maxResults: 20,
+                    maxResults: 10,
                     regionCode: 'UA'
                 }
             }).then(function (data) {

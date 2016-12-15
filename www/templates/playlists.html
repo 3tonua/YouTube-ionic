@@ -5,12 +5,11 @@
       <div class="item">
         <h2>{{ video.title }}</h2>
         <p>{{ video.author }}</p>
+        <p>{{ video.description | limitTo: 100 }}</p>
       </div>
 
       <div class="item item-image">
         <img ng-src="{{ video.image }}">
-        <iframe width="560" height="315" ng-src="{{'https://www.youtube.com/embed/' + video.id}}" frameborder="0" allowfullscreen></iframe>
-        <h2>{{ 'https://www.youtube.com/embed/' + video.id }}</h2>
       </div>
     </div>
 
