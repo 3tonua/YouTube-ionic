@@ -1,6 +1,18 @@
 <ion-view view-title="Playlists">
   <ion-content>
 
+      <div>
+          <div class="button-bar">
+              <button ng-click="prevPage()" ng-hide="nextToken == undefined" class="button button-calm">
+                  Previous 10 videos
+              </button>
+              <button ng-click="nextPage()" class="button button-positive">
+                  Next 10 videos
+              </button>
+          </div>
+      </div>
+
+
     <div class="list card" ng-repeat="video in videos" ng-click="openVideo(video)">
       <div class="item">
         <h2>{{ video.title }}</h2>
@@ -13,5 +25,11 @@
       </div>
     </div>
 
+
+
   </ion-content>
 </ion-view>
+
+
+
+<!--ng-hide="prevToken == undefined"-->

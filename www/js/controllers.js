@@ -18,12 +18,36 @@ angular.module('starter.controllers', [])
       $scope.open_video = video;
       $scope.modal.show();
       console.log(video.id);
-
       $scope.url = $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + video.id);
   };
 
   API.getMostPopularVideos().then(function (data) {
-    $scope.videos = data;
-    console.log(data);
+    $scope.videos = data.vid;
+    /*$scope.nextToken = data.ntok;
+    $scope.prevToken = data.ptok;*/
+    console.log(data.ntok);
+    console.log(data.ptok);
   });
+
+  $scope.nextPage = function () {
+    API.getMostPopularVideos($scope.nextToken).then(function (data) {
+      $scope.videos = data.vid;
+      $scope.nextToken = data.ntok;
+      console.log($scope.nextToken);
+      console.log($scope.prevToken);
+      // $scope.prevToken = data.ptok;
+
+    })
+  };
+
+  $scope.prevPage = function () {
+    API.getMostPopularVideos($scope.prevToken).then(function (data) {
+      $scope.videos = data.vid;
+      // $scope.nextToken = data.ntok;
+      $scope.prevToken = data.ptok;
+      console.log($scope.prevToken)
+
+    })
+  };
 });
+
