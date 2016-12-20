@@ -1,7 +1,6 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
 })
 
 .controller('PlaylistsCtrl', function($scope, API, $ionicModal, $sce) {
@@ -23,10 +22,6 @@ angular.module('starter.controllers', [])
 
   API.getMostPopularVideos().then(function (data) {
     $scope.videos = data.vid;
-    /*$scope.nextToken = data.ntok;
-    $scope.prevToken = data.ptok;*/
-    console.log(data.ntok);
-    console.log(data.ptok);
   });
 
   $scope.nextPage = function () {
@@ -34,16 +29,12 @@ angular.module('starter.controllers', [])
       $scope.videos = data.vid;
       $scope.nextToken = data.ntok;
       console.log($scope.nextToken);
-      console.log($scope.prevToken);
-      // $scope.prevToken = data.ptok;
-
     })
   };
 
   $scope.prevPage = function () {
     API.getMostPopularVideos($scope.prevToken).then(function (data) {
       $scope.videos = data.vid;
-      // $scope.nextToken = data.ntok;
       $scope.prevToken = data.ptok;
       console.log($scope.prevToken)
 
